@@ -14,7 +14,7 @@ ExcludeDisableModifyLimit;14
 DisabledDaysBeforeDelete;365
 InactiveDaysBeforeDisable;60
 ServiceAccountPrefix;SA_
-LogPath;C:\scripts\log
+LogPath;C:\logs
 InactiveStamp;Disabled [DISABLEDATE] (Inactivity for [INACTIVEDAYS] days)
 DisableStampRegEx;(DISABLED \040)(\d){8}
 ExcludeDisableStampRegEx;(DONT DISABLE\040)(\d){8}
