@@ -29,10 +29,10 @@ $AttributeClearOnDisable = (($InputData | where {$_.Property -eq "AttributeClear
 
 
 # - Specify credentials for connection to AzureAD and Exchange Online.
-$AADUsername = "SA_AAD@cramo.com"
-$AADPSW = "REMOVED FROM SCRIPT DOCUMENT"
-$EXOUsername = "SA_CreateMailbox@cramo.com"
-$EXOPSW = "REMOVED FROM SCRIPT DOCUMENT"
+$AADUsername = "AzureAD service account(Users account administrator)"
+$AADPSW = "Azure AD service account password"
+$EXOUsername = "Exchange Online service account(Exchange admin)"
+$EXOPSW = "Exchange Online service account password"
 
 $AADPSWSEC = ConvertTo-SecureString -AsPlainText $AADPSW -Force
 $AADCred = New-Object System.Management.Automation.PSCredential $AADUsername, $AADPSWSEC
