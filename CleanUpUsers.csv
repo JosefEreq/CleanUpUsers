@@ -1,0 +1,22 @@
+# Specify Control-properties to enable/disable checks. Date stamps in account description must be 8 digits in format yyyymmdd. AttributeClearOnDisable allows multiple comma-separated values.
+Property;Value
+ControlInactivity;True
+ControlLicense;True
+ControlDeletion;True
+DomainController;DC01.local
+UserAccountOU;OU=UserAccountOU,DC=domain,DC=local
+AdminAccountOU;OU=AdminAccountOU,DC=domain,DC=local
+UserAccountDisabledOU;OU=DisabledUsers,DC=domain,DC=local
+AdminAccountDisabledOU;OU=DisabledAdmins,DC=domain,DC=local
+ExcludeDisableGroup;DontDisableGroup
+ExcludeDisableCreationLimit;90
+ExcludeDisableModifyLimit;14
+DisabledDaysBeforeDelete;365
+InactiveDaysBeforeDisable;60
+ServiceAccountPrefix;SA_
+LogPath;C:\scripts\log
+InactiveStamp;Disabled [DISABLEDATE] (Inactivity for [INACTIVEDAYS] days)
+DisableStampRegEx;(DISABLED \040)(\d){8}
+ExcludeDisableStampRegEx;(DONT DISABLE\040)(\d){8}
+ExchConnectionURI;https://outlook.office365.com/powershell-liveid/
+AttributeClearOnDisable;
