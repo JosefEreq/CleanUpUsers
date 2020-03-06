@@ -13,6 +13,7 @@ ExcludeDisableCreationLimit;90
 ExcludeDisableModifyLimit;14
 DisabledDaysBeforeDelete;365
 InactiveDaysBeforeDisable;60
+PasswordDaysBeforeDisable;60
 ServiceAccountPrefix;SA_
 LogPath;C:\Logs
 InactiveStamp;Disabled [DISABLEDATE] (Inactivity for [INACTIVEDAYS] days)
