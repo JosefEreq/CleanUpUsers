@@ -3,7 +3,7 @@
 <#
 
 This script cleans up users, according to conditions specified in CleanUpUsers.csv:
-    It disables accounts in specified OUs, that have not logged on for a specified amount of time(To on-prem AD or Office365) or havent changed password before expiration.
+    It disables accounts in specified OUs, that have not logged on for a specified amount of time(To on-prem AD or Office365) and haven't changed password for a specified amount of time.
     It removes licenses on disabled user accounts that are synced to AzureAD.
     It deletes disabled users in specified OUs, that have not been modified for a specified amount of time.
 
