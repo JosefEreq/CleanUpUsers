@@ -87,11 +87,13 @@ $date = get-date
 # - Specify the limits for disabling and deleting users, in amount of days. Also specify limits for excluding newly created accounts and recently modified accounts.
 $DaysDelete = ($InputData | where {$_.Property -eq "DisabledDaysBeforeDelete"}).value
 $DaysLogon = ($InputData | where {$_.Property -eq "InactiveDaysBeforeDisable"}).value
+$DaysPW = ($InputData | where {$_.Property -eq "PasswordDaysBeforeDisable"}).value
 $DaysCreate = ($InputData | where {$_.Property -eq "ExcludeDisableCreationLimit"}).value
 $DaysModify = ($InputData | where {$_.Property -eq "ExcludeDisableModifyLimit"}).value
 
     ## - Create date-variables from limits specified above.
     $LimitLogon = ($date).AddDays(-$($DaysLogon))
+    $LimitPW = ($date).AddDays(-$($DaysPW))
     $LimitCreate = ($date).AddDays(-$($DaysCreate))
     $LimitModify = ($date).AddDays(-$($DaysModify))
     $LimitDeleteStamp = ($date).AddDays(-$($DaysDelete)).tostring("yyyyMMdd")
@@ -141,7 +143,7 @@ Function DisableInactiveUsers()
                 
                 # - Check if the user meets the critiera for being disabled, based on the creation-limit, modify-limit and logon-limit.
                 # - Dont loop the user if it's member of the exclusion-group, has a description matching the exclusion-string or have a name matching the service account-prefix.
-                if ( ($DabUser.createTimeStamp -lt $LimitCreate) -and ($DabUser.Modified -lt $LimitModify) -and ($DabUser.whenChanged -lt $LimitModify) -and ($DabUser.modifyTimeStamp -lt $LimitModify) -and ($PSWAD -lt $LimitLogon) -and ($LogonEXO -lt $LimitLogon) -and ($LogonAD1 -lt $LimitLogon) -and ($LogonAD2 -lt $LimitLogon) -and ($ExclUsrs -notcontains $DabUser.distinguishedName) -and ($DabUser.Description -notmatch "$($ExclDescription)") -and ($DabUser.name -notmatch "^$($SAPrefix)") )
+                if ( ($DabUser.createTimeStamp -lt $LimitCreate) -and ($DabUser.Modified -lt $LimitModify) -and ($DabUser.whenChanged -lt $LimitModify) -and ($DabUser.modifyTimeStamp -lt $LimitModify) -and ($PSWAD -lt $LimitPW) -and ($LogonEXO -lt $LimitLogon) -and ($LogonAD1 -lt $LimitLogon) -and ($LogonAD2 -lt $LimitLogon) -and ($ExclUsrs -notcontains $DabUser.distinguishedName) -and ($DabUser.Description -notmatch "$($ExclDescription)") -and ($DabUser.name -notmatch "^$($SAPrefix)") )
                     {           
                     # - Set the disable stamp on the users description.
                     Set-ADUser -Server $($Server) $DabUser -Description "$($DescriptionDABForm)"
