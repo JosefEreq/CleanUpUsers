@@ -30,9 +30,9 @@ $AttributeClearOnDisable = (($InputData | where {$_.Property -eq "AttributeClear
 
 # - Specify credentials for connection to AzureAD and Exchange Online.
 
-$AADCred = Import-CliXml -Path "AAD_upn+hash.cred"
+$EXOCred = Import-CliXml -Path "C:\script\cred\ServiceAccount_EXO.cred"
 
-$EXOCred = Import-CliXml -Path "EXO_upn+hash.cred"
+$AADCred = Import-CliXml -Path "C:\script\cred\ServiceAccount_AAD.cred"
 
 #  - Specify Exchange server URI to connect to.
 $ExchURI = ($InputData | where {$_.Property -eq "ExchConnectionURI"}).value
