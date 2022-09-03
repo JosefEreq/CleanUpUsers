@@ -1,4 +1,7 @@
 # CleanUpUsers
+
+#### This repository is not maintained!
+
 ### Automate Active Directory user cleanup. 
 ### Disable inactive users, delete old AD users and clear Office365 licenses on disabled users. 
 ### Customization and conditions in the CSV config file.
