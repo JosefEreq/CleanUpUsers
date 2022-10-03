@@ -1,4 +1,4 @@
-# CleanUpUsers
+## Clean Up Users
 
 #### This repository is not maintained!
 
